@@ -155,7 +155,7 @@ module.exports = {
         return _.defaults(options, {
           type: Sequelize.STRING,
           get: function() {
-            return JSON.parse(this.getDataValue(field))
+            return JSON.parse(this.getDataValue(field) || '[]')
           },
           set: function(val) {
             return this.setDataValue(field, JSON.stringify(val))
