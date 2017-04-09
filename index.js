@@ -23,7 +23,7 @@ module.exports = {
     if (!options) {
       options = {}
     }
-    // console.log('HELPERS',app.models[cls], cls)
+      // console.log('HELPERS',database.stores[app.models[cls].store].dialect == 'postgres', cls)
     if (
         app.models[cls]
         && database.stores[app.models[cls].store].dialect == 'postgres'
@@ -78,7 +78,7 @@ module.exports = {
     if (!options) {
       options = {}
     }
-    // console.log('HELPERS',app.models[cls], cls)
+      // console.log('HELPERS',database.stores[app.models[cls].store].dialect == 'postgres', cls)
     if (
         app.models[cls]
         && database.stores[app.models[cls].store].dialect == 'postgres'
@@ -133,7 +133,7 @@ module.exports = {
     if (!options) {
       options = {}
     }
-    console.log('HELPERS',database.stores[app.models[cls].store].dialect == 'postgres', cls)
+    // console.log('HELPERS',database.stores[app.models[cls].store].dialect == 'postgres', cls)
     if (
         app.models[cls]
         && database.stores[app.models[cls].store].dialect == 'postgres'
