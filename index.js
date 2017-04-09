@@ -23,23 +23,24 @@ module.exports = {
     if (!options) {
       options = {}
     }
-
-    if (database.models[cls]) {
-      if (database.stores[database.models[cls].store].dialect == 'postgres') {
-        sJSON = () => {
-          return _.defaults(options, {
-            type: Sequelize.JSON
-          })
-        }
-      }
-    }
-    else if (database.stores[database.models.defaultStore].dialect == 'postgres') {
+    // console.log('HELPERS',app.models[cls], cls)
+    if (
+        app.models[cls]
+        && database.stores[app.models[cls].store].dialect == 'postgres'
+    ) {
       sJSON = () => {
         return _.defaults(options, {
           type: Sequelize.JSON
         })
       }
     }
+    // else if (database.stores[database.models.defaultStore].dialect == 'postgres') {
+    //   sJSON = () => {
+    //     return _.defaults(options, {
+    //       type: Sequelize.JSON
+    //     })
+    //   }
+    // }
     else {
       sJSON = (field) =>{
         if (_.isObject(options.defaultValue)) {
@@ -77,23 +78,24 @@ module.exports = {
     if (!options) {
       options = {}
     }
-
-    if (database.models[cls]) {
-      if (database.stores[database.models[cls].store].dialect == 'postgres') {
-        sJSONB = () => {
-          return _.defaults(options, {
-            type: Sequelize.JSONB
-          })
-        }
-      }
-    }
-    else if (database.stores[database.models.defaultStore].dialect == 'postgres') {
+    // console.log('HELPERS',app.models[cls], cls)
+    if (
+        app.models[cls]
+        && database.stores[app.models[cls].store].dialect == 'postgres'
+    ) {
       sJSONB = () => {
         return _.defaults(options, {
           type: Sequelize.JSONB
         })
       }
     }
+    // else if (database.stores[database.models.defaultStore].dialect == 'postgres') {
+    //   sJSONB = () => {
+    //     return _.defaults(options, {
+    //       type: Sequelize.JSONB
+    //     })
+    //   }
+    // }
     else {
       sJSONB = (field) =>{
         if (_.isObject(options.defaultValue)) {
@@ -131,22 +133,25 @@ module.exports = {
     if (!options) {
       options = {}
     }
-    if (database.models[cls]) {
-      if (database.stores[database.models[cls].store].dialect == 'postgres') {
-        sARRAY = (type) => {
-          return _.defaults(options, {
-            type: Sequelize.ARRAY(type)
-          })
-        }
-      }
-    }
-    else if (database.stores[database.models.defaultStore].dialect == 'postgres') {
+    console.log('HELPERS',database.stores[app.models[cls].store].dialect == 'postgres', cls)
+    if (
+        app.models[cls]
+        && database.stores[app.models[cls].store].dialect == 'postgres'
+    ) {
       sARRAY = (type) => {
+        // console.log('HELPERS type', type)
         return _.defaults(options, {
           type: Sequelize.ARRAY(type)
         })
       }
     }
+    // else if (database.stores[database.models.defaultStore].dialect == 'postgres') {
+    //   sARRAY = (type) => {
+    //     return _.defaults(options, {
+    //       type: Sequelize.ARRAY(type)
+    //     })
+    //   }
+    // }
     else {
       sARRAY = (type, field) => {
         if (_.isObject(options.defaultValue)) {
