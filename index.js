@@ -101,7 +101,7 @@ module.exports = {
         if (_.isObject(options.defaultValue)) {
           options.defaultValue = JSON.stringify(options.defaultValue)
         }
-        // console.log('JSONB',field)
+        // console.log('JSONB',cls,field)
         return _.defaults(options, {
           type: Sequelize.STRING,
           get: function() {
