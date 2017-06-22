@@ -49,7 +49,7 @@ module.exports = {
         return _.defaults(options, {
           type: Sequelize.STRING,
           get: function() {
-            return JSON.parse(this.getDataValue(field))
+            return this.getDataValue(field) ? JSON.parse(this.getDataValue(field)) : null
           },
           set: function(val) {
             return this.setDataValue(field, JSON.stringify(val))
@@ -101,10 +101,11 @@ module.exports = {
         if (_.isObject(options.defaultValue)) {
           options.defaultValue = JSON.stringify(options.defaultValue)
         }
+        console.log('JSONB',field)
         return _.defaults(options, {
           type: Sequelize.STRING,
           get: function() {
-            return JSON.parse(this.getDataValue(field))
+            return this.getDataValue(field) ? JSON.parse(this.getDataValue(field)) : null
           },
           set: function(val) {
             return this.setDataValue(field, JSON.stringify(val))
